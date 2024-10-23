@@ -1,0 +1,26 @@
+<div class="logo">
+	<img src="/images/icons/logo.svg" alt="logo" width="24" height="48">
+</div>
+<button
+	class="machinery-tab"
+	[ngClass]="{
+		'selected': selectedTab() === Tabs.Machinery
+	}"
+	[attr.data-tooltip-text]="getTabName(Tabs.Machinery)"
+	(click)="chooseTab(Tabs.Machinery)"
+></button>
+<button
+	class="staff-tab"
+	[ngClass]="{
+		'selected': selectedTab() === Tabs.Staff
+	}"
+	[attr.data-tooltip-text]="getTabName(Tabs.Machinery)"
+	(click)="chooseTab(Tabs.Staff)"
+></button>
+<button class="admin-tab" data-tooltip-text="Админка" (click)="chooseTab(Tabs.None)"></button>
+<button class="exit" data-tooltip-text="Выход" (click)="chooseTab(Tabs.None)"></button>
+<app-tracking-elements-table
+	[style.display]="selectedTab() === Tabs.None ? 'none' : 'block'"
+	[trackingElementsType]="tabsToTrackingElementsMap.get(selectedTab())!"
+	(closeTab)="chooseTab(Tabs.None)"
+></app-tracking-elements-table>

@@ -1,0 +1,6 @@
+:host {
+	width: calc(100% - var(--left-menu-width));
+	height: 100%;
+
+	background-color: yellow;
+}

@@ -1,0 +1,79 @@
+@import '../../../core/components/left-menu/left-menu.component';
+
+:host {
+	position: absolute;
+	top: 0;
+	left: 100%;
+
+	width: 500px;
+	height: 100vh;
+	background-color: var(--light-100);
+
+	box-shadow: inset $box-shadow;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+
+		padding: 16px;
+
+		box-shadow:
+			0 0.5px 2px 0 rgba(96, 97, 112, 0.16),
+			0 0 1px 0 rgba(40, 41, 61, 0.08);
+
+
+		.name-and-count {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+
+			.name {
+				font-size: 1rem;
+				font-weight: 600;
+				line-height: 17.6px;
+				color: var(--dark-300);
+			}
+
+			.count {
+				padding: 4px 12px;
+				border-radius: 12px;
+
+				background-color: var(--primary-lightblue-darker);
+
+				font-size: 0.875rem;
+				line-height: 16px;
+				color: var(--light-100);
+			}
+		}
+
+		.actions {
+			display: flex;
+			gap: 16px;
+
+			.search {
+				--bg: url('/images/icons/search.svg');
+			}
+
+			.export-to-excel {
+				--bg: url('/images/icons/excel.svg');
+			}
+
+			.close {
+				--bg: url('/images/icons/close.svg');
+			}
+
+			.search,
+			.export-to-excel,
+			.close {
+				--size: 24px;
+
+				width: var(--size);
+				height: var(--size);
+
+				background-image: var(--bg);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+		}
+	}
+}

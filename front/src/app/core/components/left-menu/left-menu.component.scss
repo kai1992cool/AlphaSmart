@@ -1,0 +1,114 @@
+$box-shadow: 6px 0 18px 0 rgba(0, 0, 0, 0.06);
+
+:host {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 8px;
+
+	position: relative;
+
+	height: 100%;
+	width: var(--left-menu-width);
+	padding: 12px 0 24px 0;
+
+	background-color: var(--light-100);
+
+	box-shadow: $box-shadow;
+
+	:nth-child(4) {
+		margin-top: auto;
+	}
+
+	.logo {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 4px;
+	}
+
+	> button {
+		--switch-position: 5%;
+		--hover-bg: linear-gradient(90deg, var(--primary-lightblue) var(--switch-position), var(--primary-extralight) var(--switch-position));
+		--selected-bg: linear-gradient(90deg, var(--primary-lightblue) var(--switch-position), var(--primary-deepblue) var(--switch-position));
+
+		--hover-bg-2: linear-gradient(90deg, rgba(51, 170, 255, 1) var(--switch-position), rgba(229, 244, 255, 1) var(--switch-position));
+		--selected-bg-2: linear-gradient(90deg, rgba(51, 170, 255, 1) var(--switch-position), rgba(45, 73, 210, 1) var(--switch-position));
+
+		position: relative;
+
+		width: 100%;
+		height: 24px;
+
+		background-image: var(--bg);
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&:hover {
+			background-image: var(--bg), var(--hover-bg);
+
+			&:before {
+				--size: 8.5px;
+
+				content: '';
+
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				transform: translate(-50%, -50%) rotate(45deg);
+
+				width: var(--size);
+				height: var(--size);
+
+				background-color: var(--primary-lightblue-lighter);
+			}
+
+			&::after {
+				content: attr(data-tooltip-text);
+
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%);
+
+				padding: 8px;
+
+				border-radius: 4px;
+				background-color: var(--primary-lightblue-lighter);
+
+				box-shadow: 0 16px 24px 0 rgba(96, 97, 112, 0.16),
+				0 2px 8px 0 rgba(40, 41, 61, 0.04);
+
+				font-size: 14px;
+				line-height: 16px;
+				color: var(--dark-300);
+			}
+
+			&::before,
+			&::after {
+				z-index: 1;
+			}
+		}
+
+		&.selected {
+			background-image: var(--bg-white, var(--bg)), var(--selected-bg);
+		}
+	}
+
+	.machinery-tab {
+		--bg: url('/images/icons/machinery.svg');
+		--bg-white: url('/images/icons/machinery_white.svg');
+	}
+
+	.staff-tab {
+		--bg: url('/images/icons/staff.svg');
+		--bg-white: url('/images/icons/staff_white.svg');
+	}
+
+	.admin-tab {
+		--bg: url('/images/icons/admin.svg');
+	}
+
+	.exit {
+		--bg: url('/images/icons/exit.svg');
+	}
+}
